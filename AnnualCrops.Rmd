@@ -1,0 +1,318 @@
+---
+title: " Annual crops"
+author: "Brittany Poling"
+date: "9/5/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = FALSE, fig.path='figures/', dev=c('png'))
+if (!require("pacman")) install.packages("pacman")
+
+# pacman::p_load('ggplot2', 'plyr', 'lme4', 'AICcmodavg', 'MASS', "dplyr", "data.table")
+
+pacman::p_load(tidyverse) 
+
+d_fp = "C:/Users/Devan.McGranahan/GoogleDrive/Students/Brittany/Data & Script/Ch.3 - Dust_"
+
+```
+
+
+```{r data_loading, include=FALSE}
+
+#Specific leaf area
+
+  SLA.dat <- bind_rows(
+                read_csv(paste0(d_fp, "/Data_csv/2/SLA_2.csv")),  
+                read_csv(paste0(d_fp, "/Data_csv/3/SLA_3.csv"))
+                        )        
+  SLA2 <- SLA.dat[(1:672),c(1:3,8)] %>%
+             mutate(lsla=log(SLA)) %>%
+             filter(lsla>=4.5)
+
+#Conductance
+
+  Por.dat <- bind_rows(
+                read_csv(paste0(d_fp, "/Data_csv/2/Por_2.csv")),
+                read_csv(paste0(d_fp, "/Data_csv/3/Por_3.csv"))
+                      )
+  Por <- Por.dat[(1:1112),c(1:3,5,7,14)] %>%
+            mutate(lcond=log(conductance + 1))
+
+#Chlorophyll 
+  CCM.dat <- bind_rows(
+                read_csv(paste0(d_fp, "/Data_csv/2/CCM_2.csv")), 
+                read_csv(paste0(d_fp, "/Data_csv/3/CCM_3.csv"))
+                        )
+  
+  CCM2 <- CCM.dat[(1:1699),c(1:5,10)]  %>%
+           mutate(lconc=log(concentration + 1)) %>%
+           filter(lconc>=4)
+
+#Quantum yield
+  OS1.dat <- bind_rows(
+              read_csv(paste0(d_fp, "/Data_csv/2/OS1_2.csv")), 
+              read_csv(paste0(d_fp, "/Data_csv/3/OS1_3.csv"))
+                       )
+  OS1 <- OS1.dat[(1:1680),c(1:4,6,23)]
+```
+
+Distributions
+
+```{r distributions, warning=FALSE}
+
+#Specific leaf area
+
+SLA.dist.gg <- ggplot(SLA2, aes(x=log(SLA))) + theme_bw() + 
+ geom_histogram(aes(y=..density..),      
+                binwidth=.1, 
+                colour="black", fill="lightgreen") +
+ geom_density(alpha=.2, fill="#FF6666") #+ xlim(c(0,10)) 
+
+
+SLA.dist.gg + stat_function(data=SLA2, fun= dnorm , 
+             args=list(mean=5.86, sd=0.29),
+            colour="red", size=1.1)
+
+#Conductance
+conduct.dist.gg <- ggplot(Por, aes(x=log(conductance + 1))) + theme_bw() + 
+  geom_histogram(aes(y=..density.., fill=spp),      
+                 binwidth=.1, 
+                 colour="black") +
+  geom_density(alpha=.2) 
+conduct.dist.gg
+
+#Chlorophyll 
+ccm.dist.gg <- ggplot(CCM2, aes(x=lconc)) + theme_bw() + 
+  geom_histogram(aes(y=..density..),      
+                 binwidth=.1, 
+                 colour="black", fill="lightgreen") + 
+  geom_density(alpha=.2, fill="#FF6666") 
+ccm.dist.gg + stat_function(data=CCM2, fun= dnorm , 
+                args=list(mean=5.8, sd=0.3),
+             colour="blue", size=1.1) 
+
+#Quantum yield
+os1.dist.gg <- ggplot(OS1, aes(x=yield)) + theme_bw() + 
+  geom_histogram(aes(y=..density..),      
+                 binwidth=.03, 
+                 colour="black", fill="lightgreen") +
+  geom_density(alpha=.2, fill="#FF6666") + xlim(c(0,1)) 
+os1.dist.gg +  stat_function(data=OS1, fun= dnorm , 
+            args=list(mean=0.59, sd=0.16),
+ #args = list(mean=-0.57,sd=0.32),  
+              colour="blue", size=1.1) + labs(x="yield-normal")
+os1.dist.gg + stat_function(data=OS1, fun = dgamma, 
+                      args=list(shape=(11.4), 
+                                rate=(19.3)),
+                      colour="blue", size=1.1) + labs(x="yield-gamma")
+```
+
+Model-fitting 
+
+```{r models, warning=FALSE}
+
+#Specific leaf area
+  sla.null <- lme4::lmer(scale(log(SLA)) ~ 1 + (1|block), 
+                         data=SLA2, REML=FALSE)
+  sla.spp <- lme4::lmer(scale(log(SLA)) ~ 0 + spp + (1|block), 
+                        data=SLA2, REML=FALSE)
+  sla.treat <- lme4::lmer(scale(log(SLA)) ~ 0 + t_c + (1|block), 
+                          data=SLA2, REML=FALSE)
+  sla.add <- lme4::lmer(scale(log(SLA)) ~ 0 + spp + t_c + (1|block), 
+                        data=SLA2, REML=FALSE)
+  sla.int <- lme4::lmer(scale(log(SLA)) ~ 0 + t_c * spp + (1|block), 
+                        data=SLA2, REML=FALSE)
+
+#Conductance
+  conduct.null <- lme4::lmer(scale(lcond) ~ 1 + (1|block:date),
+                             data=Por, REML=FALSE)
+  conduct.spp <- lme4::lmer(scale(lcond) ~ 0 + spp + (1|block:date), 
+                            data=Por, REML=FALSE)
+  conduct.treat <- lme4::lmer(scale(lcond) ~ 0 + t_c + (1|block:date), 
+                              data=Por, REML=FALSE)
+  conduct.add <- lme4::lmer(scale(lcond) ~ 0 + spp + t_c + (1|block:date), 
+                            data=Por, REML=FALSE)
+  conduct.int <- lme4::lmer(scale(lcond) ~ 0 + t_c * spp + (1|block:date), 
+                            data=Por, REML=FALSE)
+  conduct.int2 <- lme4::lmer(lcond ~ 0 + t_c:spp + (1|block:date),
+                             data=Por, REML=FALSE)
+
+
+#Chlorophyll
+  conc.null <- lme4::lmer(scale(lconc) ~ 1 + (1|block/date), data=CCM2)
+  conc.spp <- lme4::lmer(scale(lconc) ~ 0 + spp + (1|block/date), data=CCM2)
+  conc.treat <- lme4::lmer(scale(lconc) ~ 0 + t_c + (1|block/date), data=CCM2)
+  conc.add <- lme4::lmer(scale(lconc) ~ 0 + spp + t_c + (1|block/date), data=CCM2)
+  conc.int <- lme4::lmer(scale(lconc) ~ 0 + t_c * spp + (1|block/date), data=CCM2)
+
+#Quantum yield
+  yield.null <- lme4::lmer(scale(yield)~ 1 + (1|block:date), 
+                           data=OS1, REML=FALSE)
+  yield.spp <- lme4::lmer(scale(yield)~ 0 + spp + (1|block:date), 
+                          data=OS1, REML=FALSE)
+  yield.treat <- lme4::lmer(scale(yield)~ 0 + t_c + (1|block:date), 
+                            data=OS1, REML=FALSE)
+  yield.add <- lme4::lmer(scale(yield)~ 0 + spp + t_c + (1|block:date), 
+                          data=OS1, REML=FALSE)
+  yield.int <- lme4::lmer(scale(yield)~ 0 + t_c*spp + (1|block:date), 
+                          data=OS1, REML=FALSE)
+  yield.int2 <- lme4::lmer(scale(yield) ~ 0 + t_c:spp + (1|block:date), 
+                           data=OS1, REML=FALSE)
+
+
+```
+
+AIC tables
+
+```{r model selection, echo=FALSE, warning=FALSE}
+#Specific leaf area 
+sla.mod.names <- c("sla.null", "sla.spp", "sla.treat", "sla.add", "sla.int")
+sla.mods <- list( )
+
+ for(i in 1:length(sla.mod.names)) {
+  sla.mods[[i]] <- get(sla.mod.names[i]) }
+print(AICcmodavg::aictab(cand.set = sla.mods, 
+             modnames = sla.mod.names)) 
+
+#Conductance
+conduct.mod.names <- c("conduct.null", "conduct.spp", "conduct.treat", "conduct.add", "conduct.int")
+conduct.mods <- list( )
+
+ for(i in 1:length(conduct.mod.names)) {
+  conduct.mods[[i]] <- get(conduct.mod.names[i]) }
+print(AICcmodavg::aictab(cand.set = conduct.mods, 
+             modnames = conduct.mod.names)) 
+
+#Chlorophyll 
+conc.mod.names <- c("conc.null", "conc.spp", "conc.treat", "conc.add", "conc.int")
+conc.mods <- list( )
+
+ for(i in 1:length(conc.mod.names)) {
+  conc.mods[[i]] <- get(conc.mod.names[i]) }
+print(AICcmodavg::aictab(cand.set = conc.mods, 
+             modnames = conc.mod.names)) 
+
+#Quantum yield
+yield.mod.names <- c("yield.null", "yield.spp", "yield.treat", "yield.add", "yield.int")
+yield.mods <- list( )
+
+ for(i in 1:length(yield.mod.names)) {
+  yield.mods[[i]] <- get(yield.mod.names[i]) }
+print(AICcmodavg::aictab(cand.set = yield.mods, 
+             modnames = yield.mod.names)) 
+
+```
+
+Specific leaf area model averaging
+
+```{r model averaging, echo=FALSE}
+#Specific leaf area
+sla.mod.names.top <- c("sla.spp", "sla.add")
+sla.mods.top <- list( )
+	 for(i in 1:length(sla.mod.names.top)) {
+  sla.mods.top[[i]] <- get(sla.mod.names.top[i]) }  
+
+ sla.terms <- c("sppBA","sppDW", "sppPB",
+	               "sppSF", "sppCO", "sppLE",
+	               "sppSO", "t_cT" )
+	    sla.av.params <- as.data.frame(array(NA,c(length(sla.terms),4)))
+	    colnames(sla.av.params)<-c("term","estimate","ciL","ciU")
+	   for(i in 1:length(sla.terms)) {
+  	    sla.av <- AICcmodavg::modavg(parm = paste(sla.terms[i]), 
+  	                 cand.set = sla.mods.top, 
+  	                 modnames = sla.mod.names.top)
+    	    sla.av.params[i,1] <- sla.terms[i]
+    	    sla.av.params[i,2] <- round(sla.av$Mod.avg.beta, 2)
+    	    sla.av.params[i,3] <- round(sla.av$Lower.CL, 3) 
+    	    sla.av.params[i,4] <- round(sla.av$Upper.CL, 3) }
+	   
+	    
+sla.av.params$term <- factor(sla.av.params$term, 
+                             levels=c("sppBA", "sppDW", "sppPB",
+                                      "sppSF", "sppCO", "sppLE",
+                                      "sppSO", "t_cT" ),
+                            labels=c("Barley", "Durum wheat", "Pinto bean", 
+                                     "Sunflower","Corn", "Lentil", 
+                                     "Sorghum", "Dust"))
+     sla.av.params                        
+
+```
+
+CI from conductance additive model with confint() 
+```{r, echo=FALSE}
+#Conductance
+conduct.add.CI <- as.data.frame(confint(conduct.add))
+```
+CI from concentration additive model with confint()
+```{r, echo=FALSE}
+#Chlorophyll 
+conc.add.CI <- as.data.frame(confint(conc.add))
+
+                                
+```
+CI from yield additive model with confint()
+```{r, echo=FALSE}
+#Quantum photosynthetic yield 
+yield.add.CI <- as.data.frame(confint(yield.add))
+
+                                
+```
+
+
+Looking at interaction model for conductance
+ 
+```{r}
+
+lme4::fixef(conduct.int2)
+
+```
+
+Looking at interaction model for yield
+ 
+```{r}
+
+lme4::fixef(yield.int2)
+
+```
+
+```{r CI data, echo=FALSE, include=FALSE}
+deffect.CI <- sla.av.params[(8),-c(1)] 
+rownames(deffect.CI) <- c("sla")
+coefs.cond <- data.frame(lme4::fixef(conduct.add))
+cond.dat <- cbind(coefs.cond[(8),],conduct.add.CI[(10),])
+colnames(cond.dat) <- c("estimate", "ciL","ciU")
+rownames(cond.dat) <- c("conductance")
+
+coefs.yield <- data.frame(lme4::fixef(yield.add))
+
+yield.dat <- cbind(coefs.yield[(8),],yield.add.CI[(10),])
+colnames(yield.dat) <- c("estimate", "ciL","ciU")
+rownames(yield.dat) <- c("yield")
+coefs.conc <- data.frame(lme4::fixef(conc.add))
+conc.dat <- cbind(coefs.conc[(8),],conc.add.CI[(11),])
+colnames(conc.dat) <- c("estimate", "ciL","ciU")
+rownames(conc.dat) <- c("concentration")
+
+coefs <- rbind(cond.dat, yield.dat, conc.dat, deffect.CI) %>%
+            rownames_to_column(var = "response")
+```
+
+```{r CI graph}
+ggplot(coefs) +
+ coord_flip() +  theme_bw(24) +
+geom_hline(yintercept = 0, linetype="dotted") + 
+    geom_errorbar(aes(x=response,
+             ymin=ciL, ymax=ciU), 
+               width=0.1, size=1.5) +
+ geom_point(aes(x=response, y=estimate), size=4.5, pch=18) + 
+ labs(y="Dust effect") +
+ theme(panel.grid.major.y = element_blank(),
+       axis.title.y = element_blank()) 
+```
+
+# Appendix
+
+```{r ref.label=knitr::all_labels(!label %in% c('data_loading', 'distributions')),echo=TRUE,eval=FALSE}
+```
+

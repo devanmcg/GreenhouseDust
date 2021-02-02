@@ -1,0 +1,145 @@
+---
+title: "Recovery_Analysis"
+author: "Brittany Poling"
+date: "8/10/2019"
+output:
+  html_document: default
+---
+
+```{r setup, include=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = FALSE, fig.path='figures/', dev=c('png'))
+if (!require("pacman")) install.packages("pacman")
+
+pacman::p_load(tidyverse) 
+
+grass.combined <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vTS7XPynyjgRkghaf8dMI1k1mPoT9qa1VZNoexYfBvofRjItm3CnYXnIC_Yv5zGF8moqUu-NxRJbMyX/pub?gid=1407150711&single=true&output=csv")
+
+
+```
+
+# Perennial Grasses
+
+```{r grass_recovery, echo=FALSE, warning=FALSE}
+grass.recov <- 
+  grass.combined %>% 
+     mutate(r1=1-(gross0-gross1)/gross0, 
+           r2=1-(gross0-gross2)/gross0,
+           photo=ifelse(species=="AGCR"|species=="AGST"|
+                         species=="SCAR"|species=="THIN", "C3","C4"))
+
+recovery.dat <- data.frame(grass.recov[-c(5:9)],
+stack(grass.recov[8:9]))
+colnames(recovery.dat)[6:7] <- c("recovery", "event")
+recovery.dat$photo <- as.factor(recovery.dat$photo)
+```
+
+```{r distribution, echo=FALSE, warning=FALSE}
+rcv.gg <- ggplot(data=recovery.dat, aes(x=recovery)) + theme_bw() + 
+  geom_histogram(aes(y=..density.., fill=event),     
+                 binwidth=.05, 
+                 colour="black") +
+  geom_density(aes(fill=event),alpha=.2, fill="#FF6666") 
+rcv.gg  + stat_function(data=recovery.dat, fun= dnorm , 
+                  args=list(mean=0.79, sd=0.2),
+colour="green", size=1.1)
+# MASS::fitdistr(recovery.dat$recovery, "normal")
+```
+
+```{r echo=FALSE, warning=FALSE}
+#add REML=false
+recov.null <- lme4::lmer(recovery~ 1 + (1|block/event), data=recovery.dat)  
+recov.spp <- lme4::lmer(recovery~ 0 + species + (1|block/event), data=recovery.dat)
+recov.treat <- lme4::lmer(recovery~ 0 + trt + (1|block/event), data=recovery.dat)
+recov.phot <- lme4::lmer(recovery ~ 0 + photo + (1|block/event), data=recovery.dat)
+
+recov.add <- lme4::lmer(recovery~ 0 + species+trt + (1|block/event), data=recovery.dat)
+recov.add2 <- lme4::lmer(recovery ~ 0 + photo + trt  + (1|block/event), data=recovery.dat)
+
+recov.int <- lme4::lmer(recovery~ 0 + species+ trt + species:trt + (1|block/event), data=recovery.dat)
+recov.int2 <- lme4::lmer(recovery~ 0 + trt:photo + (1|block/event), data=recovery.dat)
+```
+
+
+```{r models into list for AIC, warning=FALSE}
+rcv.mod.names <- c("recov.null","recov.spp", "recov.treat", "recov.phot", "recov.add", "recov.add2", "recov.int", "recov.int2")
+rcv.mods <- list( )
+
+ for(i in 1:length(rcv.mod.names)) {
+  rcv.mods[[i]] <- get(rcv.mod.names[i]) }
+print(AICcmodavg::aictab(cand.set = rcv.mods, 
+                  modnames = rcv.mod.names)) 
+```
+
+
+
+```{r confint on models, echo=FALSE, warning=FALSE, include=FALSE}
+(recov.spp.CI <- as.data.frame(confint(recov.spp)))
+(recov.add.CI <- as.data.frame(confint(recov.add)))
+```
+ 
+# Get parameter estimates averaged top models 
+
+```{r parameter estimates, warning=FALSE}
+
+rcv.mod.names.top <- c("recov.spp", "recov.add")
+rcv.mods.top <- list( )
+	 for(i in 1:length(rcv.mod.names.top)) {
+  rcv.mods.top[[i]] <- get(rcv.mod.names.top[i]) }  
+
+ rcv.terms <- c("speciesAGCR", "speciesAGST", "speciesBODA", "speciesBOGR",
+	               "speciesCYDA", "speciesPAVI", "speciesSCAR",
+	               "speciesTHIN", "trtT" )
+	    rcv.av.params <- as.data.frame(array(NA,c(length(rcv.terms),4)))
+	    colnames(rcv.av.params)<-c("term","estimate","ciL","ciU")
+	   for(i in 1:length(rcv.terms)) {
+  	    rcv.av <- AICcmodavg::modavg(parm = paste(rcv.terms[i]), 
+                  	                 cand.set = rcv.mods.top, 
+                  	                 modnames = rcv.mod.names.top)
+    	    rcv.av.params[i,1] <- rcv.terms[i]
+    	    rcv.av.params[i,2] <- round(rcv.av$Mod.avg.beta, 2)
+    	    rcv.av.params[i,3] <- round(rcv.av$Lower.CL, 3) 
+    	    rcv.av.params[i,4] <- round(rcv.av$Upper.CL, 3) }
+	    
+	    rcv.av.params
+
+rcv.av.params$term <- factor(rcv.av.params$term, 
+                             levels=c("speciesCYDA", "speciesPAVI",
+                                      "speciesBODA", "speciesBOGR",
+                                      "speciesTHIN", "speciesSCAR", "speciesAGST",
+                                      "speciesAGCR", "trtT"),
+                            labels=c("Bermuda grass", "Switchgrass", "Buffalograss", "Blue grama",
+                                     "Intermediate \n wheatgrass", "Tall fescue", 
+                                     "Creeping \n bentgrass",
+                                     "Crested \n wheatgrass", "Dust"))
+                            
+
+rcv.av.params <- rcv.av.params %>%
+  mutate(photo=ifelse(term=="Crested \n wheatgrass"|term=="Creeping \n bentgrass"|
+                     term=="Tall fescue"|term=="Intermediate \n wheatgrass", "C3","C4"))
+
+```
+
+```{r echo=FALSE, warning=FALSE}
+rcv.av.params %>% 
+filter(term!="Dust") %>%
+ggplot( aes(color=photo)) +
+  theme_bw(24) +
+geom_hline(yintercept = 1, linetype="dotted") + 
+    geom_errorbar(aes(x=term,
+             ymin=ciL, ymax=ciU), 
+               width=0.1, size=1.5) +
+ geom_point(aes(x=term, y=estimate), size=4.5, pch=18) + 
+coord_flip() +
+ labs(y="Percent biomass recovery") +
+ theme(panel.grid.major.y = element_blank(),
+       axis.title.y = element_blank()) 
+
+
+#Dust 0.01 (-0.017-0.042) - crosses zero, no dust effect 
+```
+
+
+# Code
+
+```{r ref.label=knitr::all_labels( ), echo=TRUE,eval=FALSE}
+```
