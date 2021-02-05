@@ -52,7 +52,7 @@ If we were in fact interested in parsing the error structure, we would need to g
 This explains our use of the random effect term given in our script: It appropriately accounts for random variation contributed by the modeled sources, but does not provide the unnecessary information about which term contributed what proportion of that variation. 
 
 
-Reviewer #2: Review: VEGE-D-20-00268 (first revision)
+Reviewer \#2: Review: VEGE-D-20-00268 (first revision)
 
 Thank you very much for taking the time to reanalyse the data and revise the ms. 
 
@@ -151,29 +151,29 @@ Did Cheng et al. (2010) suggest this type of analysis?
 As explained earlier, the standard approach to model selection is to start from the full model.
 (I took all R scripts below from the supplemental information.  For the sake of simplicity, I am not repeating my explanation about the random-effect term here, but my explanations earlier about the random-effect term also apply here, of course.)
 The full model is:
-scale(lconc) ~ 0 + spp * t_c + (1|block:date:pot)
+scale(lconc) ~ 0 + spp * t\_c + (1|block:date:pot)
 If we fully spell out this model, it becomes as below:
-scale(lconc) ~ 0 + spp + t_c + spp:t_c + (1|block:date:pot)
-The spp:t_c term is the species x dust interaction.
+scale(lconc) ~ 0 + spp + t\_c + spp:t\_c + (1|block:date:pot)
+The spp:t\_c term is the species x dust interaction.
 So, the first comparison should be between the following two models (and, as far as I can tell, the authors have done this):
-scale(lconc) ~ 0 + spp + t_c + spp:t_c + (1|block:date:pot)
-scale(lconc) ~ 0 + spp + t_c + (1|block:date:pot)
+scale(lconc) ~ 0 + spp + t\_c + spp:t\_c + (1|block:date:pot)
+scale(lconc) ~ 0 + spp + t\_c + (1|block:date:pot)
 If the full model is much better (meaning having much smaller AIC value) than the reduced model, then one really does not need to look at other reduced models such as:
 scale(lconc) ~ 0 + spp + (1|block:date:pot) or
-scale(lconc) ~ 0 + t_c + (1|block:date:pot)
+scale(lconc) ~ 0 + t\_c + (1|block:date:pot)
 Alternatively, if one wants to look at significance of each term in the full model, simply do this:
 summary(fullmod) to look at random-effect terms and
 anova(fullmod) to look at the fixed-effect terms: the main effects and the interaction.
 In this series of analysis, I am also puzzled by some of the models that the authors have chosen.
 Specifically, why do the following models include the intercept, while the full model and the reduced model without the interaction do not include the intercept?
 scale(lconc) ~ spp + (1|block:date:pot)
-scale(lconc) ~ t_c + (1|block:date:pot)
+scale(lconc) ~ t\_c + (1|block:date:pot)
 To me, the correct comparisons would be as follows:
-scale(lconc) ~ 0 + spp + t_c + (1|block:date:pot) and
+scale(lconc) ~ 0 + spp + t\_c + (1|block:date:pot) and
 scale(lconc) ~ 0 + spp + (1|block:date:pot) for looking at the dust effect.
 Also,
-scale(lconc) ~ 0 + spp + t_c + (1|block:date:pot) and
-scale(lconc) ~ 0 +  t_c + (1|block:date:pot) for looking at the species effect.
+scale(lconc) ~ 0 + spp + t\_c + (1|block:date:pot) and
+scale(lconc) ~ 0 +  t\_c + (1|block:date:pot) for looking at the species effect.
 
 Also, why did the authors choose the model with just the intercept as the null model?
 scale(lconc) ~ 1 + (1|block:date:pot)
@@ -186,16 +186,16 @@ Isn't this model simply unnecessary and meaningless?
 Looking at Table 2, authors are calculating the change in AIC by subtracting the AIC of each reduced model from the best model.
 For example, in chlorophyll concentration, the change in AIC between the species only model (AIC = 4140.6) and the best model (i.e., species x dust model: AIC = 4023.2): change in AIC = 117.4 = 4140.6 - 4023.2.
 This suggests that the comparisons made are between the following two models.
-scale(lconc) ~ 0 + spp + t_c + spp:t_c + (1|block:date:pot) and
+scale(lconc) ~ 0 + spp + t\_c + spp:t\_c + (1|block:date:pot) and
 scale(lconc) ~ spp + (1|block:date:pot)
 However, the correct comparison should have been as follows:
-scale(lconc) ~ 0 + spp + t_c + (1|block:date:pot) and
+scale(lconc) ~ 0 + spp + t\_c + (1|block:date:pot) and
 scale(lconc) ~ 0 + spp + (1|block:date:pot)
 And, the result of this comparison reveals the effect of dust (NOT species).
 
 Theoretically speaking, comparisons of models using AIC is best performed between nested models, although there is no law against using AIC in comparisons of non-nested models (and apparently many people have been comparing non-nested models without realising it). It is said that when comparing non-nested models, results are not as reliable as in comparing nested models.
 For example, the following is a comparison of two nested models:
-scale(lconc) ~ 0 + spp + t_c + (1|block:date:pot) and
+scale(lconc) ~ 0 + spp + t\_c + (1|block:date:pot) and
 scale(lconc) ~ 0 + spp + (1|block:date:pot)
 However, the following is a comparison of two non-nested models (an example taken from table 3):
 recovery ~ 0 + species*trt + (1|block:event:pot)
@@ -224,7 +224,7 @@ I do not see the need for Table 1 in the supplemental information.
 As explained earlier, it is clear that the responses of species to dust application vary among the physiological parameters.  There is no need to put a p-value, I don't think.
 Also, I am puzzled by the fact that the authors included "species" in the random effect (and the fact that species were nested within blocks, too).  What is the justification?  Why would the authors want to make an inference about species that have not been used in this study?
 This is a technical point, but if the authors just wanted to see the significance of the main effect ("response" in the model), then just do
-diff1 <- lme4::lmer(diff ~ 0 + response + (1|block:round:spp:pot), data= diff_dat)
+diff1 <- lme4::lmer(diff ~ 0 + response + (1|block:round:spp:pot), data= diff\_dat)
 anova(diff1)
 Please note that I would use REML here.  Please see my explanation below.
 

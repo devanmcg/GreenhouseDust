@@ -230,7 +230,7 @@ diff_dat %>%
 # Short-term responses
 #
 #
-# Regresion modelling 
+# Regression modelling 
 #
 # Model fitting 
 #
