@@ -161,7 +161,7 @@ This arrangement facilitated the application of dust to six-pot clusters by encl
 Dust was applied through a small flap in the top of the tent via a hand-pumped plant duster (Chapin Rose and Plant Duster 16 oz. 5000; CHAPIN, Batavia, NY, USA). 
 
 \begin{figure}
-  \includegraphics[width=\linewidth]{figures/GreenhouseDust}
+  \includegraphics[width=\linewidth]{GreenhouseDust}
   \caption{Applying dust to specific plants in the greenhouse. 
   \textbf{(A)} Perennial grasses were randomly assigned to six-pot groups in staggered dust or no-dust treatments. 
   Dust was applied via a hand-powered pump at the top of small vinyl greenhouse tents, and allowed 20 min to fully settle before a tent was lifted. 
@@ -253,8 +253,8 @@ Leaf temperature was variable among species such that there was no overall signi
 
 \begin{figure}
 	%\centering
-	 \hspace{0.5em}\includegraphics[width=0.8\linewidth]{figures/st_spp_gg-1}
-	\includegraphics[width=0.75\linewidth]{figures/st_ov_gg-1}
+	 \hspace{0.5em}\includegraphics[width=0.8\linewidth]{st_spp_gg-1}
+	\includegraphics[width=0.75\linewidth]{st_ov_gg-1}
 	\caption{Short-term effects of dust exposure on annual crop physiology and leaf temperature by species (Top) and by response averaged across all species (Bottom).
 		Approximately two hours passed between pre-dusting and post-dusting readings. 
 		When 95\% confidence intervals do not overlap zero, dust exposure had an effect equal to the magnitude and sign of the plotted point; when 95\% confidence intervals do overlap zero, dust exposure had no effect on the measured response. \label{fig:st_cropCIs} }
@@ -271,13 +271,48 @@ For all other measures, 95\% confidence intervals overlapped zero, indicating no
 
 Averaged across all species over the duration of the study, chlorophyll content and photosynthetic yield were greater and stomatal conductance lower among dusted plants (Fig.~\ref{fig:lt_cropCIs}). 
 
-
-\input{CropAICtab} 
+% tab:cropAIC
+\begin{table}[!h]
+	\centering
+	\begin{tabular}{llrrrrr}
+		\hline
+		Response & Model & K & AICc & $\Delta$AICc & AICcWt & Cum.Wt \\ 
+		\hline
+		Chlorophyll concentration & species x dust & 16 & 4023.2 & 0.0 & 0.80 & 0.80 \\ 
+		& species + dust & 10 & 4026.0 & 2.8 & 0.20 & 1.00 \\ 
+		& species & 9 & 4140.6 & 117.4 & 0.00 & 1.00 \\ 
+		& dust & 4 & 4656.6 & 633.4 & 0.00 & 1.00 \\ 
+		& null (Intercept only) & 3 & 4683.7 & 660.5 & 0.00 & 1.00 \\ 
+		Stomatal conductance & species + dust & 10 & 83.6 & 0.0 & 0.80 & 0.80 \\ 
+		& species x dust & 16 & 86.7 & 3.1 & 0.17 & 0.97 \\ 
+		& species & 9 & 90.3 & 6.7 & 0.03 & 1.00 \\ 
+		& dust & 4 & 1122.6 & 1039.0 & 0.00 & 1.00 \\ 
+		& null (Intercept only) & 3 & 1127.9 & 1044.3 & 0.00 & 1.00 \\ 
+		Leaf temperature & species x dust & 16 & 2552.7 & 0.0 & 1.00 & 1.00 \\ 
+		& species & 9 & 2668.7 & 116.0 & 0.00 & 1.00 \\ 
+		& species + dust & 10 & 2668.9 & 116.2 & 0.00 & 1.00 \\ 
+		& null (Intercept only) & 3 & 2729.3 & 176.6 & 0.00 & 1.00 \\ 
+		& dust & 4 & 2729.8 & 177.1 & 0.00 & 1.00 \\ 
+		Photosynthetic yield & species x dust & 16 & 3627.5 & 0.0 & 1.00 & 1.00 \\ 
+		& species + dust & 10 & 3669.0 & 41.5 & 0.00 & 1.00 \\ 
+		& species & 9 & 3701.6 & 74.1 & 0.00 & 1.00 \\ 
+		& dust & 4 & 4749.1 & 1121.5 & 0.00 & 1.00 \\ 
+		& null (Intercept only) & 3 & 4769.8 & 1142.3 & 0.00 & 1.00 \\ 
+		Specific leaf area & species & 9 & 1798.7 & 0.0 & 0.69 & 0.69 \\ 
+		& species + dust & 10 & 1800.4 & 1.8 & 0.28 & 0.97 \\ 
+		& species x dust & 16 & 1805.0 & 6.4 & 0.03 & 1.00 \\ 
+		& null (Intercept only) & 3 & 1909.2 & 110.5 & 0.00 & 1.00 \\ 
+		& dust & 4 & 1911.1 & 112.4 & 0.00 & 1.00 \\ 
+		\hline
+	\end{tabular}
+	\caption{Results of AICc-based ranking of linear mixed-effect regression models comparing four physiological responses by species, dust application, an additive multiple-regression model, and a multiple regression model with an interaction term, against a null, intercept-only model.} 
+	\label{tab:cropAIC}
+\end{table}
 
 \begin{figure}
 	%\centering
-	 \hspace{0.5em}\includegraphics[width=0.8\linewidth]{figures/lt_spp_gg-1}
-	\includegraphics[width=0.75\linewidth]{figures/lt_ov_gg-1}
+	 \hspace{0.5em}\includegraphics[width=0.8\linewidth]{lt_spp_gg-1}
+	\includegraphics[width=0.75\linewidth]{lt_ov_gg-1}
   \caption{Effect of dust exposure on annual crop physiology and leaf temperature by species (Top) and by response averaged across all species (Bottom). 
   	When 95\% confidence intervals do not overlap zero, dust exposure had an effect equal to the magnitude and sign of the plotted point; when 95\% confidence intervals do overlap zero, dust exposure had no effect on the measured response. \label{fig:lt_cropCIs} }
 \end{figure}
@@ -289,11 +324,26 @@ There was no consistent effect of dust exposure among perennial grass recovery f
 The average dust effect was negative, but not different than zero. 
 Tall fescue was the only species to show a non-zero response, in which pots exposed to dust actually grew back more biomass after clipping than those not exposed to dust. 
 
-\input{GrassAICtab} 
+% tab:grassAIC
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{lrrrrrrr}
+		\hline
+		Model & K & AICc & $\Delta$AICc & ModelLik & AICcWt & LL & Cum.Wt \\ 
+		\hline
+		species x dust & 18.0 & -197.0 & 0.0 & 1.0 & 1.0 & 117.9 & 1.0 \\ 
+		C3/C4 x dust & 6.0 & -85.3 & 111.7 & 0.0 & 0.0 & 48.8 & 1.0 \\ 
+		null (Intercept only) & 3.0 & -84.4 & 112.6 & 0.0 & 0.0 & 45.2 & 1.0 \\ 
+		Dust exposure & 4.0 & -82.5 & 114.4 & 0.0 & 0.0 & 45.4 & 1.0 \\ 
+		\hline
+	\end{tabular}
+	\caption{Results of AICc-based ranking of linear mixed-effect regression models comparing perennial grass biomass recovery by species, dust application, photosynthetic pathway (C3/C4), interactions between these variables, and a null, intercept-only model.} 
+	\label{tab:grassAIC}
+\end{table}
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.6\linewidth]{figures/GrassCIs-1}
+	\includegraphics[width=0.6\linewidth]{GrassCIs-1}
 	\caption{Effect of dust exposure on perennial grass recovery following two clipping events, by species and photosynthetic pathway. 
 		When 95\% confidence intervals do not overlap zero, dust exposure had an effect equal to the magnitude and sign of the plotted point; when 95\% confidence intervals do overlap zero, dust exposure had no effect on the measured response. \label{fig:grassCIs} }
 \end{figure}

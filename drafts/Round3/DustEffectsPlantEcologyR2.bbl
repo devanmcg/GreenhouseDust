@@ -1,0 +1,288 @@
+\begin{thebibliography}{49}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{DOI~\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{DOI~\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem[{Allred et~al(2015)Allred, Smith, Twidwell, Haggerty, Running, Naugle,
+  and Fuhlendorf}]{allred2015}
+Allred BW, Smith WK, Twidwell D, Haggerty JH, Running SW, Naugle DE, Fuhlendorf
+  SD (2015) Ecosystem services lost to oil and gas in {{North America}}.
+  Science 348(6233):401--402, \doi{10.1126/science.aaa4785}
+
+\bibitem[{Armbrust(1986)}]{armbrust1986}
+Armbrust DV (1986) Effect of particulates (dust) on cotton growth,
+  photosynthesis, and respiration. Agronomy Journal 78(6):1078--1081
+
+\bibitem[{Bao et~al(2015)Bao, Ma, Zhang, Lin, and Qu}]{bao2015}
+Bao L, Ma K, Zhang S, Lin L, Qu L (2015) Urban dust load impact on gas-exchange
+  parameters and growth of {{Sophora}} japonica {{L}}. seedlings. Plant Soil
+  Environment 61(7):309--315, \doi{10.17221/215/2015-PSE}
+
+\bibitem[{Bates et~al(2015)Bates, M{\"a}chler, Bolker, and Walker}]{bates2015}
+Bates D, M{\"a}chler M, Bolker B, Walker S (2015) Fitting linear mixed-effects
+  models using lme4. Journal of Statistical Software 67(1):1--48,
+  \doi{10.18637/jss.v067.i01}
+
+\bibitem[{Belnap et~al(2014)Belnap, Walker, Munson, and Gill}]{belnap2014}
+Belnap J, Walker BJ, Munson SM, Gill RA (2014) Controls on sediment production
+  in two {{US}} deserts. Aeolian Research 14:15--24
+
+\bibitem[{Benson and Hartnett(2006)}]{benson2006}
+Benson EJ, Hartnett DC (2006) The {{Role}} of {{Seed}} and {{Vegetative
+  Reproduction}} in {{Plant Recruitment}} and {{Demography}} in {{Tallgrass
+  Prairie}}. Plant Ecology 187(2):163--178, \doi{10.1007/s11258-005-0975-y}
+
+\bibitem[{Brahney et~al(2014)Brahney, Ballantyne, Kociolek, Spaulding, Otu,
+  Porwoll, and Neff}]{brahney2014}
+Brahney J, Ballantyne AP, Kociolek P, Spaulding S, Otu M, Porwoll T, Neff JC
+  (2014) Dust mediated transfer of phosphorus to alpine lake ecosystems of the
+  {{Wind River Range}}, {{Wyoming}}, {{USA}}. Biogeochemistry 120(1-3):259--278
+
+\bibitem[{Brown(2009)}]{brown2009}
+Brown WE (2009) Impacts of {{Road Dust}} on {{Forest Soils}} and {{Roadside
+  Vegetation}}. {{MSc}}, The Pennsylvania State University
+
+\bibitem[{Chaurasia(2013)}]{chaurasia2013}
+Chaurasia S (2013) Effect of cement industry pollution on chlorophyll content
+  of some crops at {{Kodinar}}, {{Gujarat}}, {{India}}. Proceedings of the
+  International Academy of Ecology and Environmental Sciences 3(4):288--295
+
+\bibitem[{Cheng et~al(2010)Cheng, Edwards, {Maldonado-Molina}, Komro, and
+  Muller}]{cheng2010}
+Cheng J, Edwards LJ, {Maldonado-Molina} MM, Komro KA, Muller KE (2010) Real
+  longitudinal data analysis for real people: {{Building}} a good enough mixed
+  model. Statistics in Medicine 29:504--520, \doi{10.1002/sim.3775}
+
+\bibitem[{Eller(1977)}]{eller1977}
+Eller BM (1977) Road dust induced increase of leaf temperature. Environmental
+  Pollution (1970) 13(2):99--107, \doi{10.1016/0013-9327(77)90094-5}
+
+\bibitem[{Fairweather et~al(1965)Fairweather, Sidlow, and
+  Faith}]{fairweather1965}
+Fairweather JH, Sidlow AF, Faith WL (1965) Particle {{Size Distribution}} of
+  {{Settled Dust}}. Journal of the Air Pollution Control Association
+  15(8):345--347, \doi{10.1080/00022470.1965.10468389}
+
+\bibitem[{Faraone et~al(2020)Faraone, Evans, LeBlanc, and
+  Hillier}]{faraone2020}
+Faraone N, Evans R, LeBlanc J, Hillier NK (2020) Soil and foliar application of
+  rock dust as natural control agent for two-spotted spider mites on tomato
+  plants. Scientific Reports 10(1):12108, \doi{10.1038/s41598-020-69060-5}
+
+\bibitem[{Farmer(1993)}]{farmer1993}
+Farmer AM (1993) The effects of dust on vegetation\textemdash a review.
+  Environmental Pollution 79(1):63--75
+
+\bibitem[{Field et~al(2010)Field, Belnap, Breshears, Neff, Okin, Whicker,
+  Painter, Ravi, Reheis, and Reynolds}]{field2010}
+Field JP, Belnap J, Breshears DD, Neff JC, Okin GS, Whicker JJ, Painter TH,
+  Ravi S, Reheis MC, Reynolds RL (2010) The ecology of dust. Frontiers in
+  Ecology and the Environment 8(8):423--430, \doi{10.1890/090050}
+
+\bibitem[{Fischer et~al(1998)Fischer, Rees, Sayre, Lu, Condon, and
+  Saavedra}]{fischer1998}
+Fischer RA, Rees D, Sayre KD, Lu ZM, Condon AG, Saavedra AL (1998) Wheat yield
+  progress associated with higher stomatal conductance and photosynthetic rate,
+  and cooler canopies. Crop Science 38(6):1467--1475,
+  \doi{10.2135/cropsci1998.0011183X003800060011x}
+
+\bibitem[{Flagg et~al(2014)Flagg, Neff, Reynolds, and Belnap}]{flagg2014}
+Flagg CB, Neff JC, Reynolds RL, Belnap J (2014) Spatial and temporal patterns
+  of dust emissions (2004\textendash 2012) in semi-arid landscapes,
+  southeastern {{Utah}}, {{USA}}. Aeolian Research 15:31--43,
+  \doi{10.1016/j.aeolia.2013.10.002}
+
+\bibitem[{Flexas and Medrano(2002)}]{flexas2002}
+Flexas J, Medrano H (2002) Drought-inhibition of {{Photosynthesis}} in {{C3
+  Plants}}: {{Stomatal}} and {{Non}}-stomatal {{Limitations Revisited}}. Annals
+  of Botany 89(2):183--189, \doi{10.1093/aob/mcf027}
+
+\bibitem[{Gibert et~al(2012)Gibert, Volaire, Barre, and Hazard}]{gibert2012}
+Gibert A, Volaire F, Barre P, Hazard L (2012) A fungal endophyte reinforces
+  population adaptive differentiation in its host grass species. New
+  Phytologist 194(2):561--571, \doi{10.1111/j.1469-8137.2012.04073.x}
+
+\bibitem[{He et~al(2013)He, Hatier, Card, and Matthew}]{he2013}
+He L, Hatier J, Card S, Matthew C (2013) Endophyte-infection reduces leaf
+  dehydration of ryegrass and tall fescue plants under moderate water deficit.
+  Proceedings of the New Zealand Grassland Association 75:151--156
+
+\bibitem[{Jifon and Syvertsen(2003)}]{jifon2003}
+Jifon JL, Syvertsen JP (2003) Moderate shade can increase net gas exchange and
+  reduce photoinhibition in citrus leaves. Tree Physiology 23(2):119--127
+
+\bibitem[{Kalaji et~al(2017)Kalaji, Schansker, Brestic, Bussotti, Calatayud,
+  Ferroni, Goltsev, Guidi, Jajoo, Li, Losciale, Mishra, Misra, Nebauer,
+  Pancaldi, Penella, Pollastrini, Suresh, Tambussi, Yanniccari, Zivcak, Cetner,
+  Samborska, Stirbet, Olsovska, Kunderlikova, Shelonzek, Rusinowski, and
+  B{\k{a}}ba}]{kalaji2017}
+Kalaji HM, Schansker G, Brestic M, Bussotti F, Calatayud A, Ferroni L, Goltsev
+  V, Guidi L, Jajoo A, Li P, Losciale P, Mishra VK, Misra AN, Nebauer SG,
+  Pancaldi S, Penella C, Pollastrini M, Suresh K, Tambussi E, Yanniccari M,
+  Zivcak M, Cetner MD, Samborska IA, Stirbet A, Olsovska K, Kunderlikova K,
+  Shelonzek H, Rusinowski S, B{\k{a}}ba W (2017) Frequently asked questions
+  about chlorophyll fluorescence, the sequel. Photosynthesis Research
+  132(1):13--66, \doi{10.1007/s11120-016-0318-y}
+
+\bibitem[{Killi et~al(2017)Killi, Bussotti, Raschi, and Haworth}]{killi2017}
+Killi D, Bussotti F, Raschi A, Haworth M (2017) Adaptation to high temperature
+  mitigates the impact of water deficit during combined heat and drought stress
+  in {{C3}} sunflower and {{C4}} maize varieties with contrasting drought
+  tolerance. Physiologia Plantarum 159(2):130--147, \doi{10.1111/ppl.12490}
+
+\bibitem[{Kromdijk et~al(2016)Kromdijk, G{\l}owacka, Leonelli, Gabilly, Iwai,
+  Niyogi, and Long}]{kromdijk2016}
+Kromdijk J, G{\l}owacka K, Leonelli L, Gabilly ST, Iwai M, Niyogi KK, Long SP
+  (2016) Improving photosynthesis and crop productivity by accelerating
+  recovery from photoprotection. Science 354(6314):857,
+  \doi{10.1126/science.aai8878}
+
+\bibitem[{Lawrence et~al(2010)Lawrence, Painter, Landry, and
+  Neff}]{lawrence2010}
+Lawrence CR, Painter TH, Landry CC, Neff JC (2010) Contemporary geochemical
+  composition and flux of aeolian dust to the {{San Juan Mountains}},
+  {{Colorado}}, {{United States}}. Journal of Geophysical Research:
+  Biogeosciences 115(G3), \doi{10.1029/2009JG001077}
+
+\bibitem[{Matsuki et~al(2016)Matsuki, Gardener, Smith, Howard, and
+  Gove}]{matsuki2016}
+Matsuki M, Gardener MR, Smith A, Howard RK, Gove A (2016) Impacts of dust on
+  plant health, survivorship and plant communities in semi-arid environments.
+  Austral Ecology 41(4):417--427, \doi{10.1111/aec.12328}
+
+\bibitem[{Mazerolle(2016)}]{mazerolle2016}
+Mazerolle MJ (2016) {{AICcmodavg}}: {{Model Selection}} and {{Multimodel
+  Inference Based}} on ({{Q}}){{AIC}}(c)
+
+\bibitem[{McGranahan and Poling(2018)}]{mcgranahan2018}
+McGranahan DA, Poling BN (2018) Trait-based responses of seven annual crops to
+  elevated {{CO2}} and water limitation. Renewable Agriculture and Food Systems
+  33(3):259--266, \doi{10.1017/S1742170517000692}
+
+\bibitem[{McGranahan and Yurkonis(2018)}]{mcgranahan2018a}
+McGranahan DA, Yurkonis KA (2018) Variability in grass forage quality and
+  quantity in response to elevated {{CO}} {\textsubscript{2}} and water
+  limitation. Grass and Forage Science 73(2):517--521, \doi{10.1111/gfs.12338}
+
+\bibitem[{McGranahan et~al(2017)McGranahan, Fernando, and
+  Kirkwood}]{mcgranahan2017}
+McGranahan DA, Fernando FN, Kirkwood ML (2017) Reflections on a boom:
+  {{Perceptions}} of energy development impacts in the {{Bakken}} oil patch
+  inform environmental science \&amp; policy priorities. Science of The Total
+  Environment 599-600:1993--2018, \doi{10.1016/j.scitotenv.2017.05.122}
+
+\bibitem[{{Meter Group}(2020)}]{metergroup2020}
+{Meter Group} (2020) {{SC}}-1 {{Leaf Porometer}} for {{Stomatal Conductance
+  Measurements}}. {Pullman, WA}
+
+\bibitem[{Morse et~al(2002)Morse, Day, and Faeth}]{morse2002}
+Morse L, Day T, Faeth S (2002) Effect of {{Neotyphodium}} endophyte infection
+  on growth and leaf gas exchange of {{Arizona}} fescue under contrasting water
+  availability regimes. Environmental and Experimental Botany 48(3):257--268,
+  \doi{10.1016/S0098-8472(02)00042-4}
+
+\bibitem[{Nandintsetseg and Shinoda(2015)}]{nandintsetseg2015}
+Nandintsetseg B, Shinoda M (2015) Land surface memory effects on dust emission
+  in a {{Mongolian}} temperate grassland. Journal of Geophysical Research:
+  Biogeosciences 120(3):414--427
+
+\bibitem[{Organiscak and Reed(2004)}]{organiscak2004}
+Organiscak JA, Reed W (2004) Characteristics of {{Fugitive Dust Generated}}
+  from {{Unpaved Mine Haulage Roads}}. International Journal of Surface Mining,
+  Reclamation, and Environment 18(4):236--252,
+  \doi{10.1080/1389526042000263333}
+
+\bibitem[{Painter et~al(2010)Painter, Deems, Belnap, Hamlet, Landry, and
+  Udall}]{painter2010}
+Painter TH, Deems JS, Belnap J, Hamlet AF, Landry CC, Udall B (2010) Response
+  of {{Colorado River}} runoff to dust radiative forcing in snow. Proceedings
+  of the National Academy of Sciences 107(40):17125--17130
+
+\bibitem[{{R Core Team}(2019)}]{rcoreteam2019}
+{R Core Team} (2019) R: {{A Language}} and {{Environment}} for {{Statistical
+  Computing}} (v. 3.5.3). R Foundation for Statistical Computing
+
+\bibitem[{Rinella and James(2010)}]{rinella2010}
+Rinella MJ, James JJ (2010) Invasive plant researchers should calculate effect
+  sizes, not {{P}}-values. Invasive Plant Science and Management 3(2):106--112,
+  \doi{10.1614/IPSM-09-038.1}
+
+\bibitem[{Rizza et~al(2001)Rizza, Pagani, Stanca, and Cattivelli}]{rizza2001}
+Rizza F, Pagani D, Stanca AM, Cattivelli L (2001) Use of chlorophyll
+  fluorescence to evaluate the cold acclimation and freezing tolerance of
+  winter and spring oats. Plant Breeding 120(5):389--396,
+  \doi{10.1046/j.1439-0523.2001.00635.x}
+
+\bibitem[{Roe(1950)}]{roe1950}
+Roe WB (1950) Geologic features of {{North Dakota}} lignite. Economic Geology
+  45(5):434--440
+
+\bibitem[{Sarma et~al(2017)Sarma, Chanda, and Bhuyan}]{sarma2017}
+Sarma B, Chanda SK, Bhuyan M (2017) Impact of dust accumulation on three
+  roadside plants and their adaptive responses at {{National Highway}} 37,
+  {{Assam}}, {{India}}. Tropical Plant Research 4(1):161--167,
+  \doi{10.22271/tpr.2017.v4.i1.023}
+
+\bibitem[{Sharifi et~al(1997)Sharifi, Gibson, and Rundel}]{sharifi1997}
+Sharifi MR, Gibson AC, Rundel PW (1997) Surface {{Dust Impacts}} on {{Gas
+  Exchange}} in {{Mojave Desert Shrubs}}. Journal of Applied Ecology 34(4):837,
+  \doi{10.2307/2405275}
+
+\bibitem[{Spiess et~al(2020)Spiess, McGranahan, Whippo, Poling, Daigh, and
+  Hovick}]{spiess2020}
+Spiess J, McGranahan DA, Whippo C, Poling B, Daigh ALM, Hovick T (2020) Bird
+  and invertebrate communities appear unaffected by fracking traffic along
+  rural roads despite dust emissions. Ambio 49(2):605--615,
+  \doi{10.1007/s13280-019-01207-9}
+
+\bibitem[{Thompson et~al(1984)Thompson, Mueller, Fl{\"u}ckiger, and
+  Rutter}]{thompson1984}
+Thompson JR, Mueller PW, Fl{\"u}ckiger W, Rutter AJ (1984) The effect of dust
+  on photosynthesis and its significance for roadside plants. Environmental
+  Pollution Series A, Ecological and Biological 34(2):171--190
+
+\bibitem[{Ulrichs et~al(2008)Ulrichs, Welke, {Mucha-Pelzer}, Goswami, and
+  Mewis}]{ulrichs2008}
+Ulrichs C, Welke B, {Mucha-Pelzer} T, Goswami A, Mewis I (2008) Effect of solid
+  particulate matter deposits on vegetation: A review. Function Plant Sci
+  Biotechnol 2(1):56--62
+
+\bibitem[{Waser et~al(2017)Waser, Price, Casco, Diaz, Morales, and
+  Solverson}]{waser2017}
+Waser NM, Price MV, Casco G, Diaz M, Morales AL, Solverson J (2017) Effects of
+  {{Road Dust}} on the {{Pollination}} and {{Reproduction}} of {{Wildflowers}}.
+  International Journal of Plant Sciences pp 000--000, \doi{10.1086/689282}
+
+\bibitem[{Wu and Wang(2016)}]{wu2016}
+Wu C, Wang X (2016) Research of foliar dust content estimation by reflectance
+  spectroscopy of {{Euonymus}} japonicus {{Thunb}}. Environmental
+  Nanotechnology, Monitoring \& Management 5:54--61,
+  \doi{10.1016/j.enmm.2015.09.001}
+
+\bibitem[{Zhang et~al(2019)Zhang, Beede, Banuelos, Wallis, and
+  Ferguson}]{zhang2019}
+Zhang L, Beede RH, Banuelos G, Wallis CM, Ferguson L (2019) Dust {{Interferes}}
+  with {{Pollen}}\textendash{{Stigma Interaction}} and {{Fruit Set}} in
+  {{Pistachio Pistacia}} vera cv. {{Kerman}}. HortScience 54(11):1967--1971,
+  \doi{10.21273/HORTSCI14330-19}
+
+\bibitem[{Zheng et~al(2020)Zheng, Song, Ru, Zhou, Zhong, Jiang, Hui, and
+  Wan}]{zheng2020}
+Zheng M, Song J, Ru J, Zhou Z, Zhong M, Jiang L, Hui D, Wan S (2020) Effects of
+  {{Grazing}}, {{Wind Erosion}}, and {{Dust Deposition}} on {{Plant Community
+  Composition}} and {{Structure}} in a {{Temperate Steppe}}. Ecosystems
+  \doi{10.1007/s10021-020-00526-3}
+
+\bibitem[{{Zia-Khan} et~al(2014){Zia-Khan}, Spreer, Pengnian, Zhao, Othmanli,
+  He, and M{\"u}ller}]{zia-khan2014}
+{Zia-Khan} S, Spreer W, Pengnian Y, Zhao X, Othmanli H, He X, M{\"u}ller J
+  (2014) Effect of {{Dust Deposition}} on {{Stomatal Conductance}} and {{Leaf
+  Temperature}} of {{Cotton}} in {{Northwest China}}. Water 7(1):116--131,
+  \doi{10.3390/w7010116}
+
+\end{thebibliography}

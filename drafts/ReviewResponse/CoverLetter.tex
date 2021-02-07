@@ -1,0 +1,76 @@
+\documentclass[parskip=half, 
+			   fontsize=11pt,
+			   paper=a4]				
+{scrartcl}
+\usepackage{pdfpages} 
+\usepackage[colorlinks=true, 
+bookmarks=false]
+{hyperref}
+
+%\usepackage[utf8]{inputenc}
+\usepackage[autostyle=false, style=english]{csquotes}
+\MakeOuterQuote{"}
+
+\usepackage[fromalign=right,
+fromlogo=on, 
+foldmarks=off,  
+fromrule=afteraddress,
+subject=beforeopening,  % Placement of subject
+firstfoot=false]
+{scrletter}
+
+\setkomavar{fromname}{Devan Allen McGranahan} % your name
+\setkomavar{fromaddress}{
+	Environmental \& Conservation Sciences Program \\ 
+	North Dakota State University \\
+	Fargo, ND 58108-6050}
+\setkomavar{backaddress}{}
+\setkomavar{signature}{
+	{\includegraphics[width=4cm]
+		{signature2}} \\ 
+	Devan Allen McGranahan }
+	
+	\makeatletter
+	\@setplength{backaddrheight}{-0in}
+	\makeatother
+	
+	
+	\raggedright
+	\makeatletter
+	\setlength{\@tempskipa}{-3cm}%
+	\@addtoplength{toaddrheight}{\@tempskipa}
+	\makeatother
+	
+	\makeatletter
+	\@setplength{refvpos}{4cm}
+	\makeatother
+	
+	\areaset{6in}{10in}
+	
+	\renewcommand{\raggedsignature}{\raggedright} % make the signature ragged right
+	\setkomavar{fromlogo}{ }
+
+\setkomavar{subject}{ }
+
+\begin{document}
+	\begin{letter}{Editor, \emph{Plant Ecology}}
+\setlength{\parindent}{10pt}
+
+\opening{Dear Editor,}  
+		
+Please find attached a revision of MS \# VEGE-D-20-00268R1 and response to the review. 
+
+I apologize for the delay in returning this revision. 
+Despite the decision of ``minor revisions'' it was quite time-consuming to first fully digest comments from Reviewer 2 and then to consider them carefully. 
+However, after conversations with trusted colleagues with considerable experience in using the same functions with similar statistical models, we are confident that our approach is sound. 
+While I'm sure Reviewer 2 would still have plenty to critique us on, we have gone as far as we can and submit this product with full confidence that our statistical results adequately represent our data and fully support our conclusions. 	
+
+We appreciate the opportunity to continue working towards publication in \emph{Plant Ecology}. 
+		
+\closing{Sincerely,} %eg. Regards
+%\cc{another dude}
+\end{letter}
+
+
+
+\end{document}
